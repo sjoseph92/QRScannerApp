@@ -13,21 +13,21 @@ import {
   Switch,
 } from 'react-native';
 import {styles} from './styles/styles.js';
-//import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 export default class App extends Component {
-  // loginUser = () => {
-  //   //firebase function for authorizing established users
-  //   const {email, password} = this.state;
-  //   auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then(() => {
-  //       alert('success');
-  //     })
-  //     .catch(error => {
-  //       alert(error);
-  //     });
-  // };
+  loginAnonymousUser = () => {
+    //firebase function for authorizing established users
+    
+    auth()
+    .signInAnonymously()
+    .then(() => {
+      alert('good job!')
+    })
+    .catch((error) => {
+      alert(error)
+    });
+  };
 
   render() {
     return (
@@ -37,7 +37,7 @@ export default class App extends Component {
           <TouchableOpacity
             style={styles.ButtonStyle}
             activeOpacity={0.3}
-            onPress={() => this.loginUser()}>
+            onPress={() => this.loginAnonymousUser()}>
             <Text style={styles.TextStyle}>Continue Without Registering</Text>
           </TouchableOpacity>
           <TouchableOpacity
