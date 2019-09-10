@@ -28,15 +28,14 @@ export default class QRScanner extends PureComponent {
             buttonNegative: 'Cancel',
           }}
           onBarCodeRead={barcode => {
-            alert(barcode.data)
+            alert(barcode.data);
             // this.props.navigation.navigate('VideoPlayerScreen', {
             //   uri: barcode.data,
             // });
           }}
         />
         <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-          <TouchableOpacity
-            style={styles.capture}>
+          <TouchableOpacity style={styles.capture}>
             <Text style={{fontSize: 14}}> SNAP </Text>
           </TouchableOpacity>
         </View>

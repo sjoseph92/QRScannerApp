@@ -17,7 +17,7 @@ export default class AuthenticationScreen extends Component {
     auth()
       .signInAnonymously()
       .then(() => {
-        this.props.navigation.navigate('QRScanner')
+        this.props.navigation.navigate('QRScanner');
       })
       .catch(error => {
         alert(error);

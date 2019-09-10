@@ -1,18 +1,18 @@
-import { StyleSheet }  from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   TitleText: {
-    color: "red",
-    textAlign: "center",
-    flexDirection: "column",
+    color: 'red',
+    textAlign: 'center',
+    flexDirection: 'column',
     fontSize: 50,
-    fontFamily: "AvenirNext-Heavy"
+    fontFamily: 'AvenirNext-Heavy',
   },
   MainContainer: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "white",
-    flexDirection: "column"
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    flexDirection: 'column',
   },
 
   ButtonStyle: {
@@ -22,28 +22,28 @@ export const styles = StyleSheet.create({
     paddingBottom: 15,
     marginLeft: 30,
     marginRight: 30,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "red"
+    borderColor: 'red',
   },
   TextStyle: {
-    color: "red",
-    textAlign: "center"
+    color: 'red',
+    textAlign: 'center',
   },
   textInput: {
     height: 40,
     fontSize: 20,
-    width: "90%",
-    borderColor: "#9b9b9b",
+    width: '90%',
+    borderColor: '#9b9b9b',
     borderBottomWidth: 1,
     marginTop: 8,
     marginVertical: 15,
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
     marginLeft: 18,
-    marginRight: 30
+    marginRight: 30,
   },
   container: {
     flex: 1,
@@ -63,5 +63,5 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignSelf: 'center',
     margin: 20,
-  }
+  },
 });
