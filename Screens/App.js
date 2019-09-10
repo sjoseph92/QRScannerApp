@@ -1,53 +1,15 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  Text,
-  Keyboard,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  View,
-  Button,
-  AsyncStorage,
-  Switch,
-} from 'react-native';
-import {styles} from './styles/styles.js';
-import auth from '@react-native-firebase/auth';
+import QRScanner from './QRScanner.js';
+import AuthenticationScreen from './AuthenticationScreen.js';
+import {createSwitchNavigator, createAppContainer} from 'react-navigation';
 
-export default class App extends Component {
-  
-  //firebase function for authenticating anonymous users
-  loginAnonymousUser = () => {
-    auth()
-      .signInAnonymously()
-      .then(() => {
-        alert('good job!');
-      })
-      .catch(error => {
-        alert(error);
-      });
-  };
+const App = createSwitchNavigator(
+  {
+    AuthenticationScreen,
+    QRScanner,
+  },
+  {
+    initialRouteName: 'AuthenticationScreen',
+  },
+);
 
-  render() {
-    return (
-      <View style={styles.MainContainer}>
-        <KeyboardAvoidingView>
-          <Text style={styles.TitleText}>QRScanner</Text>
-          <TouchableOpacity
-            style={styles.ButtonStyle}
-            activeOpacity={0.3}
-            onPress={() => this.loginAnonymousUser()}>
-            <Text style={styles.TextStyle}>Continue Without Registering</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.ButtonStyle}
-            activeOpacity={0.3}
-            onPress={() => this.props.navigation.navigate('SignUpScreen')}>
-            <Text style={styles.TextStyle}>Login/Create An Account</Text>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </View>
-    );
-  }
-}
+export default createAppContainer(App);
