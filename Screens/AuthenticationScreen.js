@@ -6,19 +6,18 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  View
+  View,
 } from 'react-native';
 import {styles} from './styles/styles.js';
 import auth from '@react-native-firebase/auth';
 
 export default class AuthenticationScreen extends Component {
-  
   //firebase function for authenticating anonymous users
   loginAnonymousUser = () => {
     auth()
       .signInAnonymously()
       .then(() => {
-        alert('good job!');
+        this.props.navigation.navigate('QRScanner')
       })
       .catch(error => {
         alert(error);
