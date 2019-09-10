@@ -16,17 +16,17 @@ import {styles} from './styles/styles.js';
 import auth from '@react-native-firebase/auth';
 
 export default class App extends Component {
+  
+  //firebase function for authenticating anonymous users
   loginAnonymousUser = () => {
-    //firebase function for authorizing established users
-    
     auth()
-    .signInAnonymously()
-    .then(() => {
-      alert('good job!')
-    })
-    .catch((error) => {
-      alert(error)
-    });
+      .signInAnonymously()
+      .then(() => {
+        alert('good job!');
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   render() {
