@@ -1,4 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const {height, width} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   TitleText: {
@@ -68,12 +70,11 @@ export const styles = StyleSheet.create({
     flex: 0,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: "transparent"
-
+    backgroundColor: 'transparent',
   },
   headerText: {
-    color: "red",
-    fontFamily: "AvenirNext-Heavy",
-    fontSize: 35
+    color: 'red',
+    fontFamily: 'AvenirNext-Heavy',
+    fontSize: 35,
   },
 });
