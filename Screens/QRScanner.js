@@ -10,7 +10,7 @@ export default class QRScanner extends PureComponent {
       <View style={styles.container}>
         <SafeAreaView>
         <View style={styles.header}>
-            <Text style={styles.headerText}>QRScannerApp</Text>
+            <Text style={styles.headerText}>QRScanner</Text>
         </View>
         </SafeAreaView>
         <RNCamera
