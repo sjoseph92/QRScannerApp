@@ -64,4 +64,16 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: 20,
   },
+  header: {
+    flex: 0,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: "transparent"
+
+  },
+  headerText: {
+    color: "red",
+    fontFamily: "AvenirNext-Heavy",
+    fontSize: 35
+  },
 });
