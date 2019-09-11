@@ -33,10 +33,9 @@ export default class QRScanner extends PureComponent {
             buttonNegative: 'Cancel',
           }}
           onBarCodeRead={barcode => {
-            alert(barcode.data);
-            // this.props.navigation.navigate('VideoPlayerScreen', {
-            //   uri: barcode.data,
-            // });
+            this.props.navigation.navigate('VideoPlayerScreen', {
+              uri: barcode.data,
+            });
           }}
         />
       </View>
