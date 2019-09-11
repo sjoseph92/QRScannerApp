@@ -1,7 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-const {height, width} = Dimensions.get('window');
-
 export const styles = StyleSheet.create({
   TitleText: {
     color: 'red',
@@ -76,5 +74,11 @@ export const styles = StyleSheet.create({
     color: 'red',
     fontFamily: 'AvenirNext-Heavy',
     fontSize: 35,
+  },
+  videocontainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
 });
