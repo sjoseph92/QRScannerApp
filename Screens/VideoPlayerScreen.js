@@ -15,7 +15,6 @@ export default class VideoPlayerScreen extends Component {
   constructor(props) {
     super(props);
     this.onLayout = this.onLayout.bind(this);
-    
   }
 
   state = {

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {styles} from './styles/styles.js';
