@@ -1,6 +1,6 @@
 'use strict';
 import React, {PureComponent} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {styles} from './styles/styles.js';
 
@@ -8,6 +8,11 @@ export default class QRScanner extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
+        <SafeAreaView>
+        <View style={styles.header}>
+            <Text style={styles.headerText}>QRScannerApp</Text>
+        </View>
+        </SafeAreaView>
         <RNCamera
           ref={ref => {
             this.camera = ref;
@@ -34,11 +39,6 @@ export default class QRScanner extends PureComponent {
             // });
           }}
         />
-        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-          <TouchableOpacity style={styles.capture}>
-            <Text style={{fontSize: 14}}> SNAP </Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
