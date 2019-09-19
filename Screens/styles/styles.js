@@ -45,6 +45,11 @@ export const styles = StyleSheet.create({
     marginLeft: 18,
     marginRight: 30,
   },
+  signUpText: {
+    color: 'black',
+    textAlign: 'center',
+    flexDirection: 'column',
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
