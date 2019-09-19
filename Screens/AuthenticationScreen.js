@@ -65,7 +65,7 @@ export default class AuthenticationScreen extends Component {
             Dont have an account? Create one{' '}
             <Text
               style={{textDecorationLine: 'underline'}}
-              onClick={() => this.props.navigation.navigate('SignUpScreen')}>
+              onPress={() => this.props.navigation.navigate('SignUpScreen')}>
               here
             </Text>
           </Text>
