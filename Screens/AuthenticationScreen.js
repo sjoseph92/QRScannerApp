@@ -29,6 +29,19 @@ export default class AuthenticationScreen extends Component {
       });
   };
 
+  // firebase function for logging in returning users
+  loginUser = () => {
+    const {email, password} = this.state;
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.props.navigation.navigate('QRScanner');
+      })
+      .catch(error => {
+        alert(error);
+      });
+  };
+
   render() {
     return (
       <View style={styles.MainContainer}>
@@ -52,7 +65,7 @@ export default class AuthenticationScreen extends Component {
           <TouchableOpacity
             style={styles.ButtonStyle}
             activeOpacity={0.3}
-            onPress={() => this.props.navigation.navigate('SignUpScreen')}>
+            onPress={() => this.loginUser()}>
             <Text style={styles.TextStyle}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
