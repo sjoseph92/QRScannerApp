@@ -20,7 +20,30 @@ export default class SignUpScreen extends Component {
     confirmPassword: '',
   };
 
-  
+  //firebase function for creating new users, checks to see if password and confirm password are equal
+  createUser = () => {
+    let {email, password, confirmPassword} = this.state;
+
+    if (password !== confirmPassword) {
+      this.setState({password: ''})
+      this.setState({confirmPassword: ''})
+      alert('Passwords do not match!');
+    } else {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          auth().currentUser.updateProfile({
+            displayName: `${this.state.firstName} ${this.state.lastName}`,
+          });
+        })
+        .then(() => {
+          this.props.navigation.navigate('QRScanner');
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
+  };
 
   render() {
     return (
@@ -63,11 +86,11 @@ export default class SignUpScreen extends Component {
           value={this.state.confirmPassword}
         />
         <TouchableOpacity
-            style={styles.ButtonStyle}
-            activeOpacity={0.3}
-            onPress={() => this.loginAnonymousUser()}>
-            <Text style={styles.TextStyle}>Create Account</Text>
-          </TouchableOpacity>
+          style={styles.ButtonStyle}
+          activeOpacity={0.3}
+          onPress={() => this.createUser()}>
+          <Text style={styles.TextStyle}>Create Account</Text>
+        </TouchableOpacity>
       </View>
     );
   }
