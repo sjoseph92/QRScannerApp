@@ -3,11 +3,8 @@ import AuthenticationScreen from './AuthenticationScreen.js';
 import SignUpScreen from './SignUpScreen.js';
 import VideoPlayerScreen from './VideoPlayerScreen.js';
 import VideoListScreen from './VideoListScreen.js';
-import {
-  createSwitchNavigator,
-  createAppContainer,
-} from 'react-navigation';
-import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
+import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 
 const QRVideoNav = createMaterialTopTabNavigator(
   {
