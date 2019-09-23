@@ -19,8 +19,7 @@
     "react-native-screens": "^2.0.0-alpha.3",
     "react-native-video": "^5.0.2",
     "react-navigation": "^4.0.2",
-    "react-navigation-tabs": "^2.5.4",
-    "save": "^2.4.0"
+    "react-navigation-tabs": "^2.5.4"
   },
   "devDependencies": {
     "@babel/core": "7.6.0",
