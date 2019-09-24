@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'white',
-    flexDirection: 'column',
+    alignItems: 'center'
   },
 
   ButtonStyle: {
@@ -32,18 +32,12 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   textInput: {
-    height: 40,
     fontSize: 20,
-    width: '90%',
     borderColor: '#9b9b9b',
     borderBottomWidth: 1,
-    marginTop: 8,
     marginVertical: 15,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginLeft: 18,
-    marginRight: 30,
+    padding: 0,
+    alignSelf: 'center'
   },
   signUpText: {
     color: 'black',
