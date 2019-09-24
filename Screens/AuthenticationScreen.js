@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   View,
+  Dimensions,
 } from 'react-native';
 import {styles} from './styles/styles.js';
 import auth from '@react-native-firebase/auth';
@@ -43,13 +44,15 @@ export default class AuthenticationScreen extends Component {
   };
 
   render() {
+    const {width} = Dimensions.get('window');
+
     return (
       <View style={styles.MainContainer}>
         <KeyboardAvoidingView>
           <Text style={styles.TitleText}>QRScanner</Text>
           <TextInput
             autoCapitalize="none"
-            style={styles.textInput}
+            style={[{width: width * 0.9}, styles.textInput]}
             placeholder="email"
             onChangeText={email => this.setState({email})}
             value={this.state.email}
@@ -57,19 +60,19 @@ export default class AuthenticationScreen extends Component {
           <TextInput
             autoCapitalize="none"
             secureTextEntry
-            style={styles.textInput}
+            style={[{width: width * 0.9}, styles.textInput]}
             placeholder="password"
             onChangeText={password => this.setState({password})}
             value={this.state.password}
           />
           <TouchableOpacity
-            style={styles.ButtonStyle}
+            style={[{width: width * 0.8}, styles.ButtonStyle]}
             activeOpacity={0.3}
             onPress={() => this.loginUser()}>
             <Text style={styles.TextStyle}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.ButtonStyle}
+            style={[{width: width * 0.8}, styles.ButtonStyle]}
             activeOpacity={0.3}
             onPress={() => this.loginAnonymousUser()}>
             <Text style={styles.TextStyle}>Continue Without Registering</Text>
@@ -78,6 +81,7 @@ export default class AuthenticationScreen extends Component {
             Dont have an account? Create one{' '}
             <Text
               style={{textDecorationLine: 'underline'}}
+              activeOpacity={0.3}
               onPress={() => this.props.navigation.navigate('SignUpScreen')}>
               here
             </Text>
