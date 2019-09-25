@@ -1,14 +1,6 @@
 import React, {Component} from 'react';
 import SpinningWheel from './SpinningWheel.js';
-import {
-  KeyboardAvoidingView,
-  Text,
-  Keyboard,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  View,
-} from 'react-native';
+import {Text, Dimensions, TouchableOpacity, Alert, View} from 'react-native';
 import {styles} from './styles/styles.js';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -24,7 +16,7 @@ export default class VideoListScreen extends Component {
       .doc(`users/${auth().currentUser.uid}`)
       .get()
       .then(results => {
-        if (results.exists === false) {
+        if (!results.exists) {
           this.setState({isRegisteredUser: false});
         } else {
           this.setState({
@@ -39,17 +31,19 @@ export default class VideoListScreen extends Component {
   }
 
   render() {
+    const {width} = Dimensions.get('window');
+    const {isRegisteredUser, videos} = this.state;
+
     return (
       <View style={styles.MainContainer}>
-        {!this.state.isRegisteredUser ? (
+        {!isRegisteredUser ? (
           <View>
             <TouchableOpacity
-              style={styles.ButtonStyle}
+              style={[{width: width * 0.8}, styles.ButtonStyle]}
               activeOpacity={0.3}
               onPress={() => this.props.navigation.navigate('SignUpScreen')}>
               <Text style={styles.TextStyle}>Create an account!</Text>
             </TouchableOpacity>
-            <SpinningWheel />
           </View>
         ) : (
           <View>
