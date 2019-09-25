@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {styles} from './styles/styles.js';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export default class SignUpScreen extends Component {
   state = {
@@ -18,6 +19,15 @@ export default class SignUpScreen extends Component {
     email: '',
     password: '',
     confirmPassword: '',
+  };
+
+  addUser = () => {
+    firestore()
+      .collection('users')
+      .doc(auth().currentUser.uid)
+      .set({
+        videos: [],
+      });
   };
 
   //firebase function for creating new users, checks to see if password and confirm password are equal
@@ -37,6 +47,9 @@ export default class SignUpScreen extends Component {
           auth().currentUser.updateProfile({
             displayName: `${this.state.firstName} ${this.state.lastName}`,
           });
+        })
+        .then(() => {
+          this.addUser()
         })
         .then(() => {
           this.props.navigation.navigate('QRScanner');
