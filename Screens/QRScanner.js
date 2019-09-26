@@ -10,8 +10,19 @@ import {
 } from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {styles} from './styles/styles.js';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 export default class QRScanner extends PureComponent {
+
+  updateUserVideoList = (code) => {
+    firestore()
+      .doc(`users/${auth().currentUser.uid}`)
+      .update({
+        videos: firestore.FieldValue.arrayUnion(code)
+      })
+  }
+
   render() {
     const {height, width} = Dimensions.get('window');
     const maskRowHeight = Math.round((height - 300) / 20);
@@ -44,6 +55,9 @@ export default class QRScanner extends PureComponent {
             buttonNegative: 'Cancel',
           }}
           onBarCodeRead={barcode => {
+            if(this.props.navigation.state.params.isRegistered) {
+              this.updateUserVideoList(barcode.data)
+            }
             this.props.navigation.navigate('VideoPlayerScreen', {
               uri: barcode.data,
             });
