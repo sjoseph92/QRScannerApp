@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'white',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   ButtonStyle: {
@@ -31,13 +31,13 @@ export const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
   },
-  textInput: {
+  animatedTextInput: {
+    height: 26,
     fontSize: 20,
-    borderColor: '#9b9b9b',
+    color: '#000',
     borderBottomWidth: 1,
-    marginVertical: 15,
-    padding: 0,
-    alignSelf: 'center'
+    borderBottomColor: '#555',
+    marginBottom: 10
   },
   signUpText: {
     color: 'black',
@@ -74,11 +74,25 @@ export const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-Heavy',
     fontSize: 35,
   },
+  subHeaderText: {
+    color: 'red',
+    fontFamily: 'AvenirNext-Heavy',
+    fontSize: 20,
+  },
   videocontainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+  },
+  loadingCover: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'transparent',
   },
   maskOutter: {
     position: 'absolute',
