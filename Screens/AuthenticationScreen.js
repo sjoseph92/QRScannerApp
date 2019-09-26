@@ -11,20 +11,30 @@ import {
 } from 'react-native';
 import {styles} from './styles/styles.js';
 import auth from '@react-native-firebase/auth';
+import AnimatedTextInput from './AnimatedTextInput.js';
 
 export default class AuthenticationScreen extends Component {
-  state = {
-    email: '',
-    password: '',
-  };
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+    };
+    
+    this.handleEmailChange = this.handleEmailChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+  }
 
   //firebase function for authenticating anonymous users
   loginAnonymousUser = () => {
     auth()
       .signInAnonymously()
       .then(() => {
-        this.props.navigation.navigate('QRScanner');
+        this.props.navigation.navigate('QRScanner', {
+          isRegistered: false,
+        });
       })
+
       .catch(error => {
         alert(error);
       });
@@ -36,12 +46,17 @@ export default class AuthenticationScreen extends Component {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate('QRScanner');
+        this.props.navigation.navigate('QRScanner', {
+          isRegistered: true,
+        });
       })
       .catch(error => {
         alert(error);
       });
   };
+
+  handleEmailChange = (newEmail) => this.setState({ email: newEmail });
+  handlePasswordChange = (newPassword) => this.setState({ password: newPassword });
 
   render() {
     const {width} = Dimensions.get('window');
@@ -50,21 +65,19 @@ export default class AuthenticationScreen extends Component {
       <View style={styles.MainContainer}>
         <KeyboardAvoidingView>
           <Text style={styles.TitleText}>QRScanner</Text>
-          <TextInput
-            autoCapitalize="none"
-            style={[{width: width * 0.9}, styles.textInput]}
-            placeholder="email"
-            onChangeText={email => this.setState({email})}
+          <View style={{width: width * 0.8, alignSelf: 'center', paddingBottom: 10}}>
+          <AnimatedTextInput
+            label="email"
             value={this.state.email}
+            onChangeText={this.handleEmailChange}
           />
-          <TextInput
-            autoCapitalize="none"
-            secureTextEntry
-            style={[{width: width * 0.9}, styles.textInput]}
-            placeholder="password"
-            onChangeText={password => this.setState({password})}
+          <AnimatedTextInput
+            label="password"
             value={this.state.password}
+            onChangeText={this.handlePasswordChange}
+            secureTextEntry
           />
+          </View>
           <TouchableOpacity
             style={[{width: width * 0.8}, styles.ButtonStyle]}
             activeOpacity={0.3}
