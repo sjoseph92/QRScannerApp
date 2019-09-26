@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SpinningWheel from './SpinningWheel.js';
-import {Text, Dimensions, TouchableOpacity, Alert, View} from 'react-native';
+import {Text, Dimensions, TouchableOpacity, Alert, View, SafeAreaView} from 'react-native';
 import {styles} from './styles/styles.js';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -8,7 +8,7 @@ import auth from '@react-native-firebase/auth';
 export default class VideoListScreen extends Component {
   state = {
     isRegisteredUser: '',
-    scannedVideos: [],
+    videos: [],
   };
 
   componentDidMount() {
@@ -36,6 +36,11 @@ export default class VideoListScreen extends Component {
 
     return (
       <View style={styles.MainContainer}>
+        <SafeAreaView>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>QRScanner</Text>
+          </View>
+        </SafeAreaView>
         {!isRegisteredUser ? (
           <View>
             <TouchableOpacity
