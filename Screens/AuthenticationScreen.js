@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {
   KeyboardAvoidingView,
   Text,
-  Keyboard,
-  TextInput,
   TouchableOpacity,
   Alert,
   View,
@@ -30,11 +28,8 @@ export default class AuthenticationScreen extends Component {
     auth()
       .signInAnonymously()
       .then(() => {
-        this.props.navigation.navigate('QRScanner', {
-          isRegistered: false,
-        });
+        this.props.navigation.navigate('QRScanner');
       })
-
       .catch(error => {
         alert(error);
       });
@@ -46,9 +41,7 @@ export default class AuthenticationScreen extends Component {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate('QRScanner', {
-          isRegistered: true,
-        });
+        this.props.navigation.navigate('QRScanner')
       })
       .catch(error => {
         alert(error);
@@ -65,7 +58,7 @@ export default class AuthenticationScreen extends Component {
       <View style={styles.MainContainer}>
         <KeyboardAvoidingView>
           <Text style={styles.TitleText}>QRScanner</Text>
-          <View style={{width: width * 0.8, alignSelf: 'center', paddingBottom: 10}}>
+          <View style={{width: width * 0.8, alignSelf: 'center', paddingBottom: 10, borderRadius: 1, borderColor: 'black'}}>
           <AnimatedTextInput
             label="email"
             value={this.state.email}
