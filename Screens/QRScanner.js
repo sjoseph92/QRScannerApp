@@ -1,9 +1,7 @@
 'use strict';
 import React, {PureComponent} from 'react';
 import {
-  StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   SafeAreaView,
   Dimensions,
@@ -22,6 +20,8 @@ export default class QRScanner extends PureComponent {
         videos: firestore.FieldValue.arrayUnion(code)
       })
   }
+
+
 
   render() {
     const {height, width} = Dimensions.get('window');
@@ -55,7 +55,8 @@ export default class QRScanner extends PureComponent {
             buttonNegative: 'Cancel',
           }}
           onBarCodeRead={barcode => {
-            if(this.props.navigation.state.params.isRegistered) {
+            
+            if(!auth().currentUser.isAnonymous) {
               this.updateUserVideoList(barcode.data)
             }
             this.props.navigation.navigate('VideoPlayerScreen', {
