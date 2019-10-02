@@ -6,7 +6,7 @@ import {
   View,
   Dimensions,
   Text,
-  Button,
+  Alert
 } from 'react-native';
 import Video from 'react-native-video';
 import {styles} from './styles/styles.js';
@@ -15,18 +15,20 @@ export default class VideoPlayerScreen extends Component {
   constructor(props) {
     super(props);
     this.onLayout = this.onLayout.bind(this);
+    this.state = {
+      orientationWidth: Dimensions.get('window').width,
+      orientationHeight: Dimensions.get('window').height,
+    };
   }
 
-  state = {
-    orientationWidth: Dimensions.get('window').width,
-    orientationHeight: Dimensions.get('window').height,
-  };
+  
 
   componentDidMount() {
     this.resizeVideoPlayer();
   }
 
   render() {
+    const {orientationWidth, orientationHeight} = this.state
     return (
       <View onLayout={this.onLayout} style={styles.videocontainer}>
         <Text>QRScannerApp</Text>
@@ -36,10 +38,19 @@ export default class VideoPlayerScreen extends Component {
           }}
           source={{uri: `${this.props.navigation.state.params.uri}`}}
           style={{
-            width: this.state.orientationWidth,
-            height: this.state.orientationHeight,
+            width: orientationWidth,
+            height: orientationHeight,
           }}
           controls={true}
+          onEnd={() => Alert.alert(
+            'Vans Video Player',
+            'Exit?',
+            [
+              {text: 'Cancel'},
+              {text: 'Yes', onPress: ()=> this.props.navigation.navigate('QRScanner')}
+            ],
+            { cancelable: true }
+          )}
         />
       </View>
     );
